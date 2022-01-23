@@ -1,0 +1,63 @@
+$accent: #f14635;
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 1px;
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  line-height: 1.2;
+  letter-spacing: normal;
+  background: #f0f0f0;
+  height: 110vh;
+}
+
+.container {
+  max-width: 1200px;
+  width: 100%;
+  padding: 0 5px;
+  margin: 0 auto;
+}
+
+// Sprite hover behavior
+.sprite-container {
+  position: relative;
+
+  .sprite--default,
+  .sprite--active {
+    display: block;
+    background-repeat: no-repeat;
+    transition: opacity 0.2s ease;
+  }
+
+  .sprite--default {
+    z-index: 1;
+    opacity: 1;
+  }
+
+  .sprite--active {
+    z-index: 2;
+    opacity: 0;
+  }
+
+  &:hover {
+    .sprite--default {
+      opacity: 0;
+    }
+
+    .sprite--active {
+      opacity: 1;
+    }
+  }
+}
+
+.hvr-red {
+  transition: color 0.2s ease;
+  &:hover {
+    color: $accent;
+  }
+}

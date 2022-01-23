@@ -1,0 +1,390 @@
+// !! HEADER START
+.kaspi-header {
+  font-size: 17px;
+  min-width: 1040px;
+  background: #4a4a4a;
+  padding: 0 40px;
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    position: relative;
+    height: 74px;
+  }
+
+  img {
+    max-width: 100%;
+    max-height: 100%;
+  }
+
+  button {
+    cursor: pointer;
+  }
+
+  .sprite-container {
+    .sprite--default,
+    .sprite--active {
+      background-image: url("../img/_d-header.sprite.png");
+    }
+  }
+}
+
+.kaspi-logo {
+  width: 38px;
+  height: 100%;
+  margin-right: 27px;
+
+  span {
+    display: block;
+    width: 38px;
+    height: 39px;
+    position: absolute;
+    top: 18px;
+    left: 0;
+  }
+
+  &--default {
+    background-position: -10px -232px;
+  }
+
+  &--active {
+    background-position: -10px -183px;
+  }
+}
+
+.kaspi-menu {
+  display: flex;
+  align-items: center;
+  list-style: none;
+
+  a {
+    display: block;
+    padding: 25px 0 29px;
+    margin-right: 20px;
+    text-decoration: none;
+    color: #f2f2f2;
+  }
+}
+
+.location {
+  position: relative;
+  display: block;
+  height: 100%;
+  background: none;
+  border: none;
+  margin-left: auto;
+  padding: 25px 34px;
+  font-size: 17px;
+  color: #f2f2f2;
+}
+
+.location-icon {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 24px;
+
+  &--default {
+    background-position: -10px -315px;
+  }
+
+  &--active {
+    background-position: -10px -281px;
+  }
+}
+
+.profile {
+  width: 51px;
+  height: 100%;
+
+  &::before {
+    content: "";
+    display: block;
+    width: 1px;
+    height: 28px;
+    background: #666;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+  }
+
+  &--default,
+  &--active {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+  }
+
+  &--default {
+    background-position: -10px -154px;
+  }
+
+  &--active {
+    background-position: -10px -125px;
+  }
+}
+// !! HEADER END
+
+// !! GRID START
+.banners-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 390px);
+  grid-template-rows: repeat(2, 240px);
+  grid-template-areas:
+    "first first second"
+    "first first third";
+  gap: 10px;
+  padding-top: 42px;
+
+  &__item {
+    position: relative;
+    background: red;
+    overflow: hidden;
+    text-align: center;
+    color: #fff;
+
+    &:first-child {
+      grid-area: first;
+
+      .item-bg {
+        background-image: url("../img/gridBg/MyBank_bg.jpg");
+      }
+    }
+
+    &:nth-child(2) {
+      grid-area: second;
+
+      .item-bg {
+        background-image: url("../img/gridBg/DSB.jpg");
+      }
+    }
+
+    &:last-child {
+      grid-area: third;
+
+      .item-bg {
+        background: #ffd300;
+      }
+    }
+
+    .item-info {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      z-index: 2;
+      transition: background 0.2s ease;
+    }
+
+    .item-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+      z-index: 1;
+    }
+
+    .item-title {
+      margin-bottom: 15px;
+      font-size: 80px;
+      font-weight: 500;
+    }
+
+    .subtitle {
+      margin-bottom: 55px;
+      font-size: 30px;
+    }
+
+    .item-button {
+      display: block;
+      padding: 0 15px;
+      min-width: 300px;
+      height: 59px;
+      background-color: transparent;
+      border: 1px solid #fff;
+      border-radius: 2px;
+      cursor: pointer;
+      font-size: 17px;
+      line-height: 59px;
+      color: #fff;
+      text-decoration: none;
+      text-align: center;
+      transition: all 0.2s ease-in-out;
+    }
+
+    .payment-options {
+      margin-bottom: 19px;
+
+      //slider fix
+      width: 100%;
+      max-width: 100%;
+      max-height: 100vh;
+      min-height: 0;
+      min-width: 0;
+
+      &__item {
+        display: block;
+        width: 62px;
+        height: 62px;
+        margin-right: 10px;
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        text-decoration: none;
+        transition: transform 0.2s ease;
+
+        &:hover {
+          transform: scale(1.15);
+        }
+      }
+      @for $i from 1 through 15 {
+        .slide-#{$i} {
+          background-image: url("../img/paymentIcons/#{$i}.png");
+        }
+      }
+    }
+
+    &:not(:first-child) {
+      color: #333;
+
+      .item-title {
+        display: none;
+      }
+
+      .subtitle {
+        margin-bottom: 20px;
+        font-size: 24px;
+      }
+
+      .item-button {
+        min-width: 192px;
+        height: 29px;
+        border: 1px solid #4a4a4a;
+        border-radius: 2px;
+        color: #4a4a4a;
+        font-size: 14px;
+        line-height: 29px;
+
+        &:hover {
+          background: #4a4a4a;
+          color: #fff;
+        }
+      }
+    }
+
+    &:hover {
+      .item-info {
+        background: rgba(#000, 0.3);
+      }
+
+      .item-button {
+        background: #fff;
+        color: #000;
+      }
+
+      &:not(:first-child) {
+        .item-button {
+          background: #4a4a4a;
+          color: #fff;
+        }
+      }
+    }
+  }
+}
+
+// !! GRID END
+
+// !! PRODUCTS START
+.products-list {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(190px, 1fr));
+  gap: 10px;
+  margin-top: 10px;
+
+  &__item {
+    height: 240px;
+    padding: 30px 5px 0 5px;
+    background: #fff;
+    color: #4a4a4a;
+    text-align: center;
+    text-decoration: none;
+    transition: box-shadow 0.2s ease;
+
+    &:hover {
+      box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.15);
+    }
+
+    span {
+      display: block;
+    }
+
+    .product-icon {
+      margin-left: auto;
+      margin-right: auto;
+      background-image: url("../img/_d-ourProducts.sprite.png");
+      background-repeat: no-repeat;
+
+      &--shop {
+        margin-bottom: 32px;
+        width: 61px;
+        height: 47px;
+        background-position: -10px -457px;
+      }
+
+      &--payments {
+        margin-bottom: 32px;
+        width: 48px;
+        height: 45px;
+        background-position: -10px -258px;
+      }
+
+      &--bank {
+        margin-bottom: 26px;
+        width: 54px;
+        height: 51px;
+        background-position: -10px -197px;
+      }
+
+      &--transfers {
+        margin-bottom: 29px;
+        width: 43px;
+        height: 48px;
+        background-position: -10px -10px;
+      }
+
+      &--red {
+        margin-bottom: 23px;
+        width: 62px;
+        height: 62px;
+        background-position: -10px -385px;
+      }
+
+      &--maps {
+        margin-bottom: 23px;
+        width: 51px;
+        height: 62px;
+        background-position: -10px -313px;
+      }
+    }
+
+    .product-title {
+      font-size: 24px;
+    }
+
+    .product-desc {
+      margin-top: 18px;
+      font-size: 17px;
+    }
+  }
+}
+// !! PRODUCTS END

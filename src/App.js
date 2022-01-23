@@ -1,23 +1,74 @@
-import logo from './logo.svg';
-import './App.css';
+import "swiper/css";
+import "./scss/App.scss";
+
+import Header from "./components/Header";
+import Grid from "./components/Grid";
+import Tiles from "./components/Tiles";
 
 function App() {
+  const menuItems = [
+    { text: "Магазин", link: "/" },
+    { text: "Платежи", link: "/" },
+    { text: "Мой Банк", link: "/" },
+    { text: "Red", link: "/" },
+    { text: "Бонус", link: "/" },
+    { text: "Гид", link: "/" },
+    { text: "Maps", link: "/" },
+    { text: "Переводы", link: "/" },
+  ];
+
+  const productsItems = [
+    {
+      title: "Магазин",
+      text: "Покупки в кредит не выходя из дома",
+      link: "/",
+      class: "shop",
+    },
+    {
+      title: "Платежи",
+      text: "Без комиссий, более 5000 услуг",
+      link: "/",
+      class: "payments",
+    },
+    {
+      title: "Мой Банк",
+      text: "Информация о картах, кредитах и депозитах",
+      link: "/",
+      class: "bank",
+    },
+    {
+      title: "Переводы",
+      text: "Между счетами и с карты на карту",
+      link: "/",
+      class: "transfers",
+    },
+    {
+      title: "Kaspi Red",
+      text: "Покупки в рассрочку",
+      link: "/",
+      class: "red",
+    },
+    {
+      title: "Kaspi Maps",
+      text: "Ближайшие банкомат, отделение, терминал и магазин",
+      link: "/",
+      class: "maps",
+    },
+  ];
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header menuItems={menuItems} />
+      <div className="container">
+        <main>
+          <section className="banners">
+            <Grid />
+          </section>
+          <section className="products">
+            <Tiles productsItems={productsItems} />
+          </section>
+        </main>
+      </div>
     </div>
   );
 }
